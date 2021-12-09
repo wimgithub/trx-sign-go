@@ -8,6 +8,7 @@ import (
 	"github.com/fbsobreira/gotron-sdk/pkg/client"
 	"github.com/fbsobreira/gotron-sdk/pkg/proto/api"
 	"github.com/fbsobreira/gotron-sdk/pkg/proto/core"
+	"google.golang.org/grpc"
 	"math/big"
 	"strings"
 	"time"
@@ -34,7 +35,7 @@ func (c *Client) SetTimeout(timeout time.Duration) error {
 		return errors.New("client is nil ptr")
 	}
 	c.GRPC = client.NewGrpcClientWithTimeout(c.node, timeout)
-	err := c.GRPC.Start()
+	err := c.GRPC.Start(grpc.WithInsecure())
 	if err != nil {
 		return fmt.Errorf("grpc start error: %v", err)
 	}
