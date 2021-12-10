@@ -1,4 +1,4 @@
-module github.com/JFJun/trx-sign-go
+module github.com/wimgithub/trx-sign-go
 
 go 1.14
 
